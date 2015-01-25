@@ -11,4 +11,4 @@ database:
 
 test:
   override:
-    - bundle exec rake --trace
+    - bundle exec rake
