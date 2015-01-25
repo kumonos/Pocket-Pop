@@ -1,0 +1,14 @@
+machine:
+  ruby:
+    version:
+      2.1.2
+  environment:
+    RAILS_ENV: development
+
+database:
+  override:
+    - bundle exec rake db:migrate --trace
+
+test:
+  override:
+    - bundle exec rake --trace
