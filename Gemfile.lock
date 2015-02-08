@@ -43,6 +43,13 @@ GEM
     awesome_print (1.6.1)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bitters (1.0.0)
+      bourbon (>= 3.2)
+      sass (>= 3.2)
+      thor
+    bourbon (4.1.1)
+      sass (~> 3.3)
+      thor
     builder (3.2.2)
     bullet (4.14.2)
       activesupport (>= 3.0.0)
@@ -249,6 +256,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bitters
   bullet
   byebug
   coffee-rails (~> 4.1.0)
