@@ -14,6 +14,7 @@ gem 'haml-rails'
 gem 'pocket-ruby', '~> 0.0.5'
 gem 'dotenv-rails'
 gem 'bitters', group: :assets
+gem 'mtracker'
 
 group :development, :test do
   gem 'byebug'
@@ -23,4 +24,8 @@ group :development, :test do
   gem 'rubocop'
   gem 'rails_best_practices'
   gem 'bullet'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'turnip'
 end
