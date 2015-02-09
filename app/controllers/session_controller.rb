@@ -10,7 +10,7 @@ class SessionController < ApplicationController
     result = Pocket.get_result(session[:code], redirect_uri: callback_url)
     user = User.from_oauth result
     session[:username] = user.name
-    redirect_to '/'
+    redirect_to '/config'
   end
 
   def destroy

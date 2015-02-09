@@ -10,10 +10,10 @@ class ApplicationController < ActionController::Base
   def authenticate
     return if Rails.env == 'test'
 
-    if should_redirect_to_top
-      redirect_to '/'
-    elsif should_redirect_to_config
+    if should_redirect_to_config
       redirect_to '/config'
+    elsif should_redirect_to_top
+      redirect_to '/'
     end
   end
 
@@ -31,10 +31,10 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def should_redirect_to_top
-    !current_page?('/') && !current_user
+    !current_page?(['/', '/session/connect', '/session/create']) && !current_user
   end
 
   def should_redirect_to_config
-    !current_page?(['/config', '/session/connect']) && current_user
+    !current_page?(['/config', '/session/connect', '/session/create']) && current_user
   end
 end
