@@ -6,7 +6,10 @@
   %body
     #header
       #header_in
-        = image_tag 'logo.png', id: 'logo', alt: 'Pocket Pop', width: '201', height: '39'
+        %a{href: '/'}
+          = image_tag 'logo.png', id: 'logo', alt: 'Pocket Pop', width: '201', height: '39'
+        - if @user
+          %a#logout{href: '/session/destroy'} ログアウト
     #content
       = yield
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
