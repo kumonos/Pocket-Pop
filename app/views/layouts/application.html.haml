@@ -6,7 +6,7 @@
   %body
     #header
       #header_in
-        = image_tag 'logo.png', alt: 'Pocket Pop', width: '201', height: '39'
+        = image_tag 'logo.png', id: 'logo', alt: 'Pocket Pop', width: '201', height: '39'
     #content
       = yield
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
