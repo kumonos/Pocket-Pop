@@ -1,0 +1,10 @@
+#wrapper
+  %h1 設定
+  %p Pocketの未読記事を毎日5件ずつメールでお送りします。<br />送信先のメールアドレスを設定してください。
+  = form_tag do
+    = text_field_tag 'email', @user.email
+    - if @success
+      .success 保存しました
+    - if @errors && @errors[:email]
+      .error= @errors[:email].join("\n")
+    = submit_tag '保存'

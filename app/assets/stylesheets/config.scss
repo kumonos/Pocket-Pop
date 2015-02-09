@@ -1,0 +1,24 @@
+#wrapper {
+  $padding: 10px;
+  width: $content_width - $padding * 2;
+  margin: 20px auto;
+  padding: $padding;
+  background: #eee;
+  border-radius: 3px;
+  border: 1px solid gainsboro;
+  box-shadow: 0 2px 4px darken(#fefefe, 10%);
+}
+
+#email {
+  margin: 0 0 10px 0;
+}
+
+.success {
+  color: green;
+  margin: 0 0 10px 0;
+}
+
+.error {
+  color: red;
+  margin: 0 0 10px 0;
+}

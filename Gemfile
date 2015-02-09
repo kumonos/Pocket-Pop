@@ -15,6 +15,7 @@ gem 'pocket-ruby', '~> 0.0.5'
 gem 'dotenv-rails'
 gem 'bitters', group: :assets
 gem 'mtracker'
+gem 'validates_email_format_of'
 
 group :development, :test do
   gem 'byebug'

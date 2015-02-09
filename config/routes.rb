@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   get 'session/connect'
   get 'session/create'
   get 'session/destroy'
+  get 'config' => 'config#index'
+  post 'config' => 'config#index'
 end

@@ -1,6 +1,8 @@
+$content_width: 800px;
+
 body {
   margin: 0;
-  background: #fff;
+  background: #f5f5f5;
 }
 
 #header {
@@ -9,7 +11,11 @@ body {
 }
 
 #header_in {
-  width: 900px;
+  width: $content_width;
   margin: 0 auto;
   padding: 10px 0;
+}
+
+#logo {
+  margin: 0 0 0 10px;
 }
