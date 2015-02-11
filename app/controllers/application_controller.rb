@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= User.where(name: session[:username]).first_or_initialize if session[:username]
+    @current_user ||= User.where(name: session[:username]).first if session[:username]
   end
   helper_method :current_user
 
