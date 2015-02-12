@@ -16,6 +16,7 @@ gem 'dotenv-rails'
 gem 'bitters', group: :assets
 gem 'mtracker'
 gem 'validates_email_format_of'
+gem 'mandrill-api'
 
 group :development, :test do
   gem 'byebug'
