@@ -1,3 +1,4 @@
 Please add .env file with following format:
 
     POCKET_CONSUMER_KEY = 'xxxxx-xxxxxxxxxx'
+    MANDRILL_API_KEY = 'xxxxxxxxxxxxxxx'
