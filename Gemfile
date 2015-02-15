@@ -17,6 +17,7 @@ gem 'bitters', group: :assets
 gem 'mtracker'
 gem 'validates_email_format_of'
 gem 'mandrill-api'
+gem 'action_args'
 
 group :development, :test do
   gem 'byebug'

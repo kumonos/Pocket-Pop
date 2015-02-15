@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   get 'session/destroy'
   get 'config' => 'config#index'
   post 'config' => 'config#index'
+  get 'archive' => 'archive#index'
 end

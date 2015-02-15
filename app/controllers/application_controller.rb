@@ -36,6 +36,6 @@ class ApplicationController < ActionController::Base
   end
 
   def should_redirect_to_config
-    !current_page?(['/config', '/session/connect', '/session/create', '/session/destroy']) && current_user
+    current_page?('/') && current_user
   end
 end
