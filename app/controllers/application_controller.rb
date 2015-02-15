@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
     if should_redirect_to_config
       redirect_to '/config'
     elsif should_redirect_to_top
+      session[:redirect_path] = request.path
       redirect_to '/'
     end
   end
@@ -35,6 +36,6 @@ class ApplicationController < ActionController::Base
   end
 
   def should_redirect_to_config
-    !current_page?(['/config', '/session/connect', '/session/create', '/session/destroy']) && current_user
+    current_page?('/') && current_user
   end
 end
