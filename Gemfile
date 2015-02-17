@@ -18,11 +18,13 @@ gem 'mtracker'
 gem 'validates_email_format_of'
 gem 'mandrill-api'
 gem 'action_args'
+gem 'render_anywhere', require: false
 
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
 
+  gem 'pry'
   gem 'guard-rails'
   gem 'rubocop'
   gem 'rails_best_practices'
