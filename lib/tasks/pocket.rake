@@ -43,8 +43,8 @@ namespace 'pocket' do
           track_opens: true,
           merge_language: 'mailchimp',
           merge: true,
-          from_email: 'pocketpop@kumonos.jp',
-          from_name: 'Pocket Pop',
+          from_email: 'pocketporter@kumonos.jp',
+          from_name: 'Pocket Porter',
           subject: "Pocket未読記事: 今日の#{items.count}件",
           view_content_link: nil,
           track_clicks: nil,
@@ -52,7 +52,7 @@ namespace 'pocket' do
                  type: 'to',
                  name: user.name }],
           html: html,
-          tags: ['pocket pop daily'],
+          tags: ['pocket porter daily'],
           headers: { 'Reply-To' => 'info@kumonos.jp' }
         }
         async = false
