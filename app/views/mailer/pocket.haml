@@ -1,0 +1,17 @@
+!!! 5
+%html
+  %head
+    %meta{charset: 'utf-8'}
+  %body
+    %h1= "今日の未読記事#{items.count}件"
+    %p ※リンクをクリックすると、その記事は自動的に既読になります。
+    %table
+      - items.each do |item|
+        %tr
+          %td
+            - if item[:image]
+              %a{ href: item[:url] }
+                = image_tag item[:image], alt: item[:title], width: '100'
+          %td
+            %a{ href: item[:url] }= item[:title]
+            %div= item[:excerpt]
