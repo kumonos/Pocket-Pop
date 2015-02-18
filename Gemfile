@@ -33,4 +33,8 @@ group :development, :test do
   gem 'capybara'
   gem 'capybara-webkit'
   gem 'turnip'
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-rbenv', require: false
+  gem 'capistrano-rsync', git: 'https://github.com/BEST10developers/capistrano-rsync.git', require: false
+  gem 'capistrano3-unicorn', require: false
 end
