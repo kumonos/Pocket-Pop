@@ -42,7 +42,7 @@ namespace :deploy do
       invoke 'unicorn:start'
     end
   end
-  after :db_migrate, :restart
+  after :publishing, :restart
 end
 
 Rake::Task['metrics:collect'].clear_actions
