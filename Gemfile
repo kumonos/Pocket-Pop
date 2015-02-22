@@ -19,6 +19,7 @@ gem 'validates_email_format_of'
 gem 'mandrill-api'
 gem 'action_args'
 gem 'render_anywhere', require: false
+gem 'whenever', require: false
 
 group :development, :test do
   gem 'byebug'
