@@ -5,8 +5,13 @@ worker_processes 2
 
 # socket
 listen 3300
-listen File.expand_path("tmp/sockets/unicorn_#{env}.sock", __FILE__)
-pid File.expand_path("tmp/pids/unicorn_#{env}.pid", __FILE__)
+if env == 'production'
+  listen '/apps/pocket-porter/tmp/unicorn.sock'
+  pid '/apps/pocket-porter/tmp/unicorn.pid'
+else
+  listen File.expand_path("tmp/sockets/unicorn_#{env}.sock", __FILE__)
+  pid File.expand_path("tmp/pids/unicorn_#{env}.pid", __FILE__)
+end
 
 # logs
 stderr_path '/var/log/apps/pocket_porter/unicorn.log'
