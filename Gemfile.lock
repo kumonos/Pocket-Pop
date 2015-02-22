@@ -1,10 +1,3 @@
-GIT
-  remote: https://github.com/BEST10developers/capistrano-rsync.git
-  revision: 95e22f67eb9ab77ffad1de02e07e987e51e92df5
-  specs:
-    capistrano-rsync (1.0.2)
-      capistrano (>= 3.0.0.pre14, < 4)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -80,6 +73,8 @@ GEM
     capistrano-rbenv (2.0.3)
       capistrano (~> 3.1)
       sshkit (~> 1.3)
+    capistrano-scm-gitcopy (0.0.8)
+      capistrano (~> 3.0)
     capistrano-stats (1.1.1)
     capistrano3-unicorn (0.2.1)
       capistrano (~> 3.1, >= 3.1.0)
@@ -344,7 +339,7 @@ DEPENDENCIES
   byebug
   capistrano-rails
   capistrano-rbenv
-  capistrano-rsync!
+  capistrano-scm-gitcopy
   capistrano3-unicorn
   capybara
   capybara-webkit

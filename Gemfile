@@ -36,6 +36,6 @@ group :development, :test do
   gem 'turnip'
   gem 'capistrano-rails', require: false
   gem 'capistrano-rbenv', require: false
-  gem 'capistrano-rsync', git: 'https://github.com/BEST10developers/capistrano-rsync.git', require: false
   gem 'capistrano3-unicorn', require: false
+  gem 'capistrano-scm-gitcopy', require: false
 end

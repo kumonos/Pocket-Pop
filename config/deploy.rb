@@ -1,6 +1,6 @@
 set :application, 'pocket-porter'
 set :repo_url, -> { 'file://' + Dir.pwd + '/.git' }
-set :scm, :rsync
+set :scm, :gitcopy
 set :branch, ENV['BRANCH'] || 'master'
 
 # set up rbenv
@@ -16,13 +16,6 @@ set :rbenv_roles, :all # default value
 set :assets_roles, [:web, :app]
 set :normalize_asset_timestamps, %(
   public/images public/javascripts public/stylesheets)
-
-# set up rsync
-set :rsync_src_path, '.'
-set :rsync_options, %w(
-  --recursive --delete --delete-excluded --exclude='vendor/bundle/'
-  --exclude='.git/' --exclude='log/'
-)
 
 # set up unicorn
 set :unicorn_pid, '/apps/pocket-porter/tmp/unicorn.pid'
