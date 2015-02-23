@@ -20,6 +20,7 @@ gem 'mandrill-api'
 gem 'action_args'
 gem 'render_anywhere', require: false
 gem 'whenever', require: false
+gem 'unicorn-rails'
 
 group :development, :test do
   gem 'byebug'
