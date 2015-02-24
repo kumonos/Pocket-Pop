@@ -37,5 +37,3 @@ namespace :deploy do
   end
   after :publishing, :restart
 end
-
-Rake::Task['metrics:collect'].clear_actions
