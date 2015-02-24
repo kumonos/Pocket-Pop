@@ -36,9 +36,6 @@ namespace :deploy do
 
   task updating: :new_release_path do
     invoke "#{scm}:create_release"
-    run_locally do
-      execute :mkdir, '-p', release_path
-    end
     invoke 'deploy:set_current_revision'
     invoke 'deploy:symlink:shared'
   end
@@ -249,6 +246,15 @@ namespace :deploy do
 
   task :restart
   task :failed
+end
+
+# override gitcopy
+namespace :gitcopy do
+  task :create_release do
+    run_locally do
+      execute :mkdir, '-p', release_path
+    end
+  end
 end
 
 # add restart task
