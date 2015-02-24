@@ -36,7 +36,9 @@ namespace :deploy do
 
   task updating: :new_release_path do
     invoke "#{scm}:create_release"
-    execute :mkdir, '-p', release_path
+    run_locally do
+      execute :mkdir, '-p', release_path
+    end
     invoke 'deploy:set_current_revision'
     invoke 'deploy:symlink:shared'
   end
