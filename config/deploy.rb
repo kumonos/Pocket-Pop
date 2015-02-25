@@ -326,7 +326,7 @@ namespace :gitcopy do
       execute :mkdir, '-p', release_path
 
       # Create a temporary file on the server
-      tmp_file = release_path.tmp
+      tmp_file = "#{release_path}.tmp"
 
       # Upload the archive, extract it and finally remove the tmp_file
       execute :copy, tarball, tmp_file
