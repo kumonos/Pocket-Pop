@@ -269,3 +269,40 @@ namespace :deploy do
   end
   after :publishing, :restart
 end
+
+# override capistrano3-unicorn
+namespace :unicorn do
+  task :start do
+    run_locally do
+      within current_path do
+        if test("[ -e #{fetch(:unicorn_pid)} ] && kill -0 #{pid}")
+          info 'unicorn is running...'
+        else
+          with rails_env: fetch(:rails_env) do
+            execute(:bundle, 'exec unicorn', '-c', fetch(:unicorn_config_path),
+                    '-E', fetch(:unicorn_rack_env), '-D', fetch(:unicorn_options))
+          end
+        end
+      end
+    end
+  end
+
+  desc 'Stop Unicorn (QUIT)'
+  task :stop do
+    run_locally do
+      within current_path do
+        if test("[ -e #{fetch(:unicorn_pid)} ]")
+          if test("kill -0 #{pid}")
+            info 'stopping unicorn...'
+            execute :kill, '-s QUIT', pid
+          else
+            info 'cleaning up dead unicorn pid...'
+            execute :rm, fetch(:unicorn_pid)
+          end
+        else
+          info 'unicorn is not running...'
+        end
+      end
+    end
+  end
+end
