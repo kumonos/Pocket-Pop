@@ -6,16 +6,16 @@ worker_processes 2
 # socket
 listen 3300
 if env == 'production'
-  listen '/apps/pocket-porter/tmp/unicorn.sock'
-  pid '/apps/pocket-porter/tmp/unicorn.pid'
+  listen '/apps/pocketporter/tmp/unicorn.sock'
+  pid '/apps/pocketporter/tmp/unicorn.pid'
 else
   listen File.expand_path("tmp/sockets/unicorn_#{env}.sock", __FILE__)
   pid File.expand_path("tmp/pids/unicorn_#{env}.pid", __FILE__)
 end
 
 # logs
-stderr_path '/var/log/apps/pocket_porter/unicorn.log'
-stdout_path '/var/log/apps/pocket_porter/unicorn.log'
+stderr_path '/var/log/apps/pocketporter/unicorn.log'
+stdout_path '/var/log/apps/pocketporter/unicorn.log'
 
 preload_app true
 
