@@ -329,7 +329,7 @@ namespace :gitcopy do
       tmp_file = "#{release_path}.tmp"
 
       # Upload the archive, extract it and finally remove the tmp_file
-      execute :copy, tarball, tmp_file
+      execute :cp, tarball, tmp_file
       execute :tar, '-xzf', tmp_file, '-C', release_path
       execute :rm, tmp_file
     end
