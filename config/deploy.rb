@@ -261,7 +261,7 @@ end
 namespace :deploy do
   desc 'Restart application'
   task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
+    run_locally do
       invoke 'deploy:migrate'
       invoke 'unicorn:stop'
       invoke 'unicorn:start'
