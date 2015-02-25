@@ -20,6 +20,7 @@ gem 'mandrill-api'
 gem 'action_args'
 gem 'render_anywhere', require: false
 gem 'whenever', require: false
+gem 'pg'
 gem 'unicorn-rails'
 gem 'capistrano-rails', require: false
 gem 'capistrano-rbenv', require: false
