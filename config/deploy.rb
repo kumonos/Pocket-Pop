@@ -306,7 +306,20 @@ end
 
 # override gitcopy
 namespace :gitcopy do
-  task deploy: archive_name do |file|
+  archive_name =  "archive.#{ DateTime.now.strftime('%Y%m%d%m%s') }.tar.gz"
+
+  desc "Archive files to #{archive_name}"
+  file archive_name do |_file|
+    system "git ls-remote #{fetch(:repo_url)} | grep #{fetch(:branch)}"
+    if $CHILD_STATUS.exitstatus == 0
+      system "git archive --remote #{fetch(:repo_url)} --format=tar #{fetch(:branch)}:#{fetch(:sub_directory)}" \
+        " | gzip > #{ archive_name }"
+    else
+      puts "Can't find commit for: #{fetch(:branch)}"
+    end
+  end
+
+  task deploy: fetch(:archive_name) do |file|
     tarball = file.prerequisites.first
     run_locally do
       # Make sure the release directory exists
