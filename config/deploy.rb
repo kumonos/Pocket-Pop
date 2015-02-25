@@ -303,3 +303,22 @@ namespace :unicorn do
     end
   end
 end
+
+# override gitcopy
+namespace :gitcopy do
+  task deploy: archive_name do |file|
+    tarball = file.prerequisites.first
+    run_locally do
+      # Make sure the release directory exists
+      execute :mkdir, '-p', release_path
+
+      # Create a temporary file on the server
+      tmp_file = capture('mktemp')
+
+      # Upload the archive, extract it and finally remove the tmp_file
+      execute :copy, tarball, tmp_file
+      execute :tar, '-xzf', tmp_file, '-C', release_path
+      execute :rm, tmp_file
+    end
+  end
+end
