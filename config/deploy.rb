@@ -311,7 +311,7 @@ namespace :gitcopy do
   desc "Archive files to #{archive_name}"
   file archive_name do |_file|
     system "git ls-remote #{fetch(:repo_url)} | grep #{fetch(:branch)}"
-    if $CHILD_STATUS.exitstatus == 0
+    if $?.exitstatus == 0
       system "git archive --remote #{fetch(:repo_url)} --format=tar #{fetch(:branch)}:#{fetch(:sub_directory)}" \
         " | gzip > #{ archive_name }"
     else
