@@ -4,7 +4,7 @@ env = ENV['RACK_ENV'] || ENV['RAILS_ENV'] || 'staging'
 worker_processes 2
 
 # socket
-listen 3300
+listen 3311
 if env == 'production'
   listen '/apps/pocketporter/tmp/unicorn.sock'
   pid '/apps/pocketporter/tmp/unicorn.pid'
