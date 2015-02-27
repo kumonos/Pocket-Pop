@@ -15,7 +15,7 @@ set :normalize_asset_timestamps, %(
   public/images public/javascripts public/stylesheets)
 
 # set up unicorn
-set :unicorn_pid, '/apps/pocket-porter/tmp/unicorn.pid'
+set :unicorn_pid, '/apps/pocketporter/tmp/unicorn.pid'
 set :linked_files, %w(.env)
 set :unicorn_rack_env, 'production'
 
