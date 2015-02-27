@@ -10,3 +10,6 @@ Documentation:
 
 LineLength:
   Max: 115
+
+Style/SpecialGlobalVars:
+  Enabled: false

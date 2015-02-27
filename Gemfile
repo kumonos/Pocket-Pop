@@ -19,6 +19,13 @@ gem 'validates_email_format_of'
 gem 'mandrill-api'
 gem 'action_args'
 gem 'render_anywhere', require: false
+gem 'whenever', require: false
+gem 'unicorn-rails'
+gem 'capistrano-rails', require: false
+gem 'capistrano-rbenv', require: false
+gem 'capistrano3-unicorn', require: false
+gem 'capistrano-scm-gitcopy', require: false
+gem 'mysql2'
 
 group :development, :test do
   gem 'byebug'
