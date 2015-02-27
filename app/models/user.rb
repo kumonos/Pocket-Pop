@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
     where(auth.slice(:username)).first_or_initialize.tap do |user|
       user.name = auth['username']
       user.oauth_token = auth['access_token']
-      user.save!
+      user.save!(validate: false)
     end
   end
 end
