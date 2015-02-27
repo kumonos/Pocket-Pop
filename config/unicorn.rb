@@ -9,13 +9,18 @@ if env == 'production'
   listen '/apps/pocketporter/tmp/unicorn.sock'
   pid '/apps/pocketporter/tmp/unicorn.pid'
 else
-  listen File.expand_path("tmp/sockets/unicorn_#{env}.sock", __FILE__)
-  pid File.expand_path("tmp/pids/unicorn_#{env}.pid", __FILE__)
+  listen File.expand_path("../../tmp/sockets/unicorn_#{env}.sock", __FILE__)
+  pid File.expand_path("../../tmp/pids/unicorn_#{env}.pid", __FILE__)
 end
 
 # logs
-stderr_path '/var/log/apps/pocketporter/unicorn.log'
-stdout_path '/var/log/apps/pocketporter/unicorn.log'
+if env == 'production'
+  stderr_path '/var/log/apps/pocketporter/unicorn.log'
+  stdout_path '/var/log/apps/pocketporter/unicorn.log'
+else
+  stderr_path File.expand_path("../../log/unicorn_#{env}.log", __FILE__)
+  stdout_path File.expand_path("../../log/unicorn_#{env}.log", __FILE__)
+end
 
 preload_app true
 
