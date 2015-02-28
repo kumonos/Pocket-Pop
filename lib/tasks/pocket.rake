@@ -11,7 +11,9 @@ namespace 'pocket' do
     String.class_eval { undef_method :render }
 
     MAX_COUNT = 10
+    BASE_URL = 'http://pocketporter.kumonos.jp/'
     mandrill = Mandrill::API.new ENV['MANDRILL_API_KEY']
+    today = Time.now.strftime('%Y年%m月%d日')
 
     User.all.each do |user|
       p "user: #{user.name}"
@@ -24,13 +26,15 @@ namespace 'pocket' do
 
       items = []
       result['list'].values.sample(MAX_COUNT).each do |item|
-        url = item['resolved_url'] || item['given_url']
-        next unless url
+        item_url = item['resolved_url'] || item['given_url']
+        next unless item_url
+
+        redirect_url = "#{BASE_URL}archive?id=#{item['item_id']}&url=#{item_url}"
 
         items << {
           title: item['resolved_title'] || item['given_title'] || '',
           image: item['images'] && item['images']['1'] && item['images']['1']['src'],
-          url: url,
+          url: redirect_url,
           excerpt: item['excerpt'] || ''
         }
       end
@@ -45,7 +49,7 @@ namespace 'pocket' do
           merge: true,
           from_email: 'pocketporter@kumonos.jp',
           from_name: 'Pocket Porter',
-          subject: "Pocket未読記事: 今日の#{items.count}件",
+          subject: "#{today}のPocket未読記事#{items.count}件",
           view_content_link: nil,
           track_clicks: nil,
           to: [{ email: user.email,
