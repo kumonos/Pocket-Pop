@@ -7,14 +7,22 @@
       %a{href: 'http://pocketporter.kumonos.jp'}
         %img{src: 'http://pocketporter.kumonos.jp/assets/logo-eb1e02c7c3e9a5b2ea6f97ddb5970d26.png', alt: 'Pocket Porter'}
     %h2= "今日の未読記事#{items.count}件"
-    %p ※リンクをクリックすると、その記事は自動的に既読になります。
+    %p{style: 'border-bottom: 1px solid #666; padding-bottom:20px;'} ※リンクをクリックすると、その記事は自動的に既読になります。
     %table
       - items.each do |item|
         %tr
           %td
-            - if item[:image]
-              %a{ href: item[:url] }
-                = image_tag item[:image], alt: item[:title], width: '100'
+            %h3
+              %a{ href: item[:url] }= item[:title]
+        %tr
           %td
-            %a{ href: item[:url] }= item[:title]
-            %div= item[:excerpt]
+            %div{style: 'border-bottom: 1px solid #ccc; padding-bottom: 10px;'}
+              - if item[:image]
+                %div{width: '100', style: 'float: left; margin-right: 10px;'}
+                  %a{ href: item[:url] }
+                    = image_tag item[:image], alt: item[:title], width: '100'
+                %div= item[:excerpt]
+                %div{style: 'clear: both; height: 1px;'}
+                  %img{src: 'http://pocketporter.kumonos.jp/assets/spacer-f7ebb1c28e209196295d22f658ab789a.gif', height: '1'}
+              - else
+                = item[:excerpt]
