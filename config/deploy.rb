@@ -29,7 +29,8 @@ namespace :deploy do
   task :restart do
     run_locally do
       invoke 'deploy:migrate'
-      invoke 'unicorn:restart'
+      invoke 'unicorn:stop'
+      invoke 'unicorn:start'
     end
   end
   after :publishing, :restart
