@@ -18,3 +18,9 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+
+set :output, '/var/log/apps/pocketporter/cron.log'
+
+every 1.day, at: '7:00 am' do
+  rake 'pocket:send_mail'
+end
