@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
     if should_redirect_to_config
       redirect_to '/config'
     elsif should_redirect_to_top
-      session[:redirect_path] = request.path
+      session[:redirect_path] = request.fullpath
       redirect_to '/'
     end
   end
