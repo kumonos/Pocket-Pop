@@ -30,6 +30,7 @@ namespace :deploy do
     run_locally do
       invoke 'deploy:migrate'
       invoke 'unicorn:stop'
+      execute :sleep, '3s'
       invoke 'unicorn:start'
     end
   end
