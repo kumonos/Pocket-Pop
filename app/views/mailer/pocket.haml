@@ -3,7 +3,10 @@
   %head
     %meta{charset: 'utf-8'}
   %body
-    %h1= "今日の未読記事#{items.count}件"
+    %h1
+      %a{href: 'http://pocketporter.kumonos.jp'}
+        %img{src: 'http://pocketporter.kumonos.jp/assets/logo-eb1e02c7c3e9a5b2ea6f97ddb5970d26.png', alt: 'Pocket Porter'}
+    %h2= "今日の未読記事#{items.count}件"
     %p ※リンクをクリックすると、その記事は自動的に既読になります。
     %table
       - items.each do |item|
