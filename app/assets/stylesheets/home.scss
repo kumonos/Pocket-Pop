@@ -1,7 +1,6 @@
 .home-main {
-  height: 280px;
   background: image_url("home_bg.png");
-  padding: 90px 0 0 0;
+  padding: 90px 0 40px 0;
 }
 
 .home-main__message {
@@ -17,4 +16,27 @@
   display: block;
   width: 230px;
   text-align: center;
+}
+
+.home-description {
+  width: 450px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.home-description__h2 {
+  border-top: 1px solid #ccc;
+  padding: 10px 0 0 0;
+  margin: 20px 0 10px 0;
+}
+
+.home-description__target-ul {
+  list-style-type: disc;
+  margin: 0 0 20px 20px;
+  font-weight: bold;
+}
+
+.home-description__howto_ul {
+  list-style-type: decimal;
+  margin: 0 0 20px 25px;
 }
