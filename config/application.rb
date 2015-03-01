@@ -28,6 +28,6 @@ module PocketPop
     config.assets.paths << `bundle show bitters`.strip + '/app/assets/stylesheets/'
 
     config.logger = Logger.new($stdout)
-    Rails.application.config.assets.precompile += %w(*.gif)
+    config.assets.precompile += %w(*.gif)
   end
 end
