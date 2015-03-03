@@ -41,6 +41,7 @@ namespace 'pocket' do
 
       begin
         html = render template: 'mailer/pocket', layout: nil, locals: { items: items }
+        puts html
         params = {
           recipient_metadata: [{ rcpt: user.email, values: { username: user.name } }],
           global_merge_vars: [{ content: 'merge1 content', name: 'merge1' }],
@@ -61,7 +62,7 @@ namespace 'pocket' do
         }
         async = false
         result = mandrill.messages.send params, async
-        p result
+        puts result
       rescue Mandrill::Error => e
         puts "A mandrill error occurred: #{e.class} - #{e.message}"
       end
