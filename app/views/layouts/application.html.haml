@@ -12,4 +12,6 @@
           %a#logout{href: '/session/destroy'} ログアウト
     #content
       = yield
+    #footer
+      = "© #{link_to 'kumonos', 'http://kumonos.jp', target: '_blank'} all rights reserved.".html_safe
     = javascript_include_tag 'application', 'data-turbolinks-track' => true

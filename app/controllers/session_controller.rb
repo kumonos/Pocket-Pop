@@ -7,6 +7,11 @@ class SessionController < ApplicationController
   end
 
   def create
+    unless session[:code]
+      redirect_to '/'
+      return
+    end
+
     result = Pocket.get_result(session[:code], redirect_uri: callback_url)
     user = User.from_oauth result
     session[:username] = user.name
