@@ -1,5 +1,5 @@
 #wrapper
-  %p Pocketの未読記事を毎日5件ずつメールでお送りします。<br />送信先のメールアドレスを設定してください。
+  %p Pocketの未読記事を毎朝7時に10件ずつメールでお送りします。<br />送信先のメールアドレスを設定してください。
   = form_tag do
     = text_field_tag 'email', @user.email
     - if @success
