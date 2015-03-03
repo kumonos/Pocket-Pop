@@ -13,3 +13,6 @@ LineLength:
 
 Style/SpecialGlobalVars:
   Enabled: false
+
+Metrics/AbcSize:
+  Max: 30
