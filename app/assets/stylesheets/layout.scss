@@ -28,5 +28,25 @@ body {
 #footer {
   border-top: 1px solid #ccc;
   padding: 5px 0;
-  text-align: center
+  text-align: center;
+}
+
+#social {
+  width: 430px;
+  padding-left: 50px;
+  margin: 0 auto;
+  @include clearfix;
+}
+
+.social_button {
+  float: left;
+  margin-right: 5px;
+}
+
+.twitter_button {
+  width: 80px;
+}
+
+.fb-share-button {
+  margin-top: -4px;
 }
