@@ -26,6 +26,7 @@ gem 'capistrano-rbenv', require: false
 gem 'capistrano3-unicorn', require: false
 gem 'capistrano-scm-gitcopy', require: false
 gem 'mysql2'
+gem 'meta-tags'
 
 group :development, :test do
   gem 'byebug'
