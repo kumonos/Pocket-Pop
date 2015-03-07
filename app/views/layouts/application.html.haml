@@ -1,7 +1,19 @@
 !!! 5
 %html
   %head
-    %title あとで読むサービスPocketの未読記事を毎日メールでお届け: Pocket Porter
+    = display_meta_tags charaset: 'utf-8'
+    - title = 'Pocket Porter あとで読むサービスPocketの未読記事を毎日メールでお届け'
+    - description = '「あとで読む」はずだったPocketの中身を毎日メールでお届けします'
+    %title= title
+    = display_meta_tags viewport: 'width=device-width,initial-scale=1.0',
+        description: description,
+        fb: {app_id: '1548893725364773'},
+        og: {type: 'website',
+          title: title,
+          description: description,
+          site_name: 'Pocket Porter',
+          url: 'http://pocketporter.kumonos.jp',
+          image: asset_path('logo.png')}
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
   %body
     #fb-root
