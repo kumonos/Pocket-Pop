@@ -32,12 +32,13 @@ namespace 'pocket' do
         redirect_url = "#{BASE_URL}archive?id=#{item['item_id']}&url=#{item_url}"
 
         items << {
-          title: item['resolved_title'] || item['given_title'] || '',
+          title: item['resolved_title'] || item['given_title'] || item_url,
           image: item['images'] && item['images']['1'] && item['images']['1']['src'],
           url: redirect_url,
           excerpt: item['excerpt'] || ''
         }
       end
+      next if items.empty?
 
       begin
         html = render template: 'mailer/pocket', layout: nil, locals: { items: items }
