@@ -7,7 +7,8 @@ namespace 'pocket' do
   task 'send_mail', [:dry_run] => :environment do |t, args|
     include RenderAnywhere
 
-    puts "dry running..." if args[:dry_run]
+    p t
+    puts 'dry running...' if args[:dry_run]
 
     # workaround for RenderAnywhere
     String.class_eval { undef_method :render }
