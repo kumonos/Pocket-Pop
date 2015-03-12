@@ -29,13 +29,20 @@ namespace 'pocket' do
 
       items = []
       result['list'].values.sample(MAX_COUNT).each do |item|
-        item_url = item['resolved_url'] || item['given_url']
-        next unless item_url
+        item_url = item['resolved_url'].present? ? item['resolved_url'] : item['given_url']
+        next if item_url.blank?
 
         redirect_url = "#{BASE_URL}archive?id=#{item['item_id']}&url=#{item_url}"
 
+        title = item_url
+        if item['resolved_title'].present?
+          title = item['resolved_title']
+        elsif item['given_title'].present?
+          title = item['given_title']
+        end
+
         items << {
-          title: item['resolved_title'] || item['given_title'] || item_url,
+          title: title,
           image: item['images'] && item['images']['1'] && item['images']['1']['src'],
           url: redirect_url,
           excerpt: item['excerpt'] || ''
