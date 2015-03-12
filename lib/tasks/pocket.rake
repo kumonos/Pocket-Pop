@@ -4,8 +4,10 @@ require 'render_anywhere'
 
 namespace 'pocket' do
   desc 'send mail'
-  task 'send_mail' => :environment do
+  task 'send_mail', [:dry_run] => :environment do |t, args|
     include RenderAnywhere
+
+    puts "dry running..." if args[:dry_run]
 
     # workaround for RenderAnywhere
     String.class_eval { undef_method :render }
@@ -40,28 +42,31 @@ namespace 'pocket' do
       end
       next if items.empty?
 
+      html = render template: 'mailer/pocket', layout: nil, locals: { items: items }
+      puts html
+      params = {
+        recipient_metadata: [{ rcpt: user.email, values: { username: user.name } }],
+        global_merge_vars: [{ content: 'merge1 content', name: 'merge1' }],
+        track_opens: true,
+        merge_language: 'mailchimp',
+        merge: true,
+        from_email: 'pocketporter@kumonos.jp',
+        from_name: 'Pocket Porter',
+        subject: "#{today}のPocket未読記事#{items.count}件",
+        view_content_link: nil,
+        track_clicks: nil,
+        to: [{ email: user.email,
+               type: 'to',
+               name: user.name }],
+        html: html,
+        tags: ['pocket porter daily'],
+        headers: { 'Reply-To' => 'info@kumonos.jp' }
+      }
+      async = false
+
+      next if args[:dry_run]
+
       begin
-        html = render template: 'mailer/pocket', layout: nil, locals: { items: items }
-        puts html
-        params = {
-          recipient_metadata: [{ rcpt: user.email, values: { username: user.name } }],
-          global_merge_vars: [{ content: 'merge1 content', name: 'merge1' }],
-          track_opens: true,
-          merge_language: 'mailchimp',
-          merge: true,
-          from_email: 'pocketporter@kumonos.jp',
-          from_name: 'Pocket Porter',
-          subject: "#{today}のPocket未読記事#{items.count}件",
-          view_content_link: nil,
-          track_clicks: nil,
-          to: [{ email: user.email,
-                 type: 'to',
-                 name: user.name }],
-          html: html,
-          tags: ['pocket porter daily'],
-          headers: { 'Reply-To' => 'info@kumonos.jp' }
-        }
-        async = false
         result = mandrill.messages.send params, async
         puts result
       rescue Mandrill::Error => e
