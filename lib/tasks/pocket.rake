@@ -19,9 +19,12 @@ namespace 'pocket' do
     today = Time.now.strftime('%Y年%m月%d日')
 
     User.all.each do |user|
-      p "user: #{user.name}"
+      puts '-----'
+      puts "user: #{user.name}"
       next unless user.email
-      p "email: #{user.email}"
+      puts "email: #{user.email}"
+      puts "stop_mail: #{user.stop_mail}"
+      next if user.stop_mail
 
       client = Pocket.client(access_token: user.oauth_token)
       result = client.retrieve(count: 50, detailType: 'complete')
