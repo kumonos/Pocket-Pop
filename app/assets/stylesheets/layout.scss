@@ -1,3 +1,4 @@
+$small:  "only screen and (max-width:800px)";
 $content_width: 800px;
 
 body {
@@ -12,6 +13,9 @@ body {
 
 #header_in {
   width: $content_width;
+  @media #{$small} {
+    width: 100%;
+  }
   margin: 0 auto;
   padding: 10px 0;
 }

@@ -1,6 +1,9 @@
 #wrapper {
   $padding: 10px;
   width: $content_width - $padding * 2;
+  @media #{$small} {
+    width: -webkit-calc(100% - #{$padding} * 2);
+  }
   margin: 20px auto;
   padding: $padding;
   background: #eee;
