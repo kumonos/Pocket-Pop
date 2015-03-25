@@ -27,7 +27,7 @@ namespace 'pocket' do
       next if user.stop_mail
 
       client = Pocket.client(access_token: user.oauth_token)
-      result = client.retrieve(count: 50, detailType: 'complete')
+      result = client.retrieve(detailType: 'complete')
       next unless result['status'] == 1
 
       items = []
