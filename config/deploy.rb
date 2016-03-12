@@ -5,7 +5,7 @@ set :branch, ENV['BRANCH'] || 'master'
 
 # set up rbenv
 set :rbenv_type, :user
-set :rbenv_ruby, '2.1.1'
+set :rbenv_ruby, '2.2.2'
 set :rbenv_map_bins, %w(rake gem bundle ruby rails)
 set :rbenv_roles, :all # default value
 
