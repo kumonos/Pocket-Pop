@@ -9,6 +9,7 @@ set :rbenv_custom_path, '/usr/local/anyenv/envs/rbenv'
 set :rbenv_ruby, '2.2.2'
 set :rbenv_map_bins, %w(rake gem bundle ruby rails)
 set :rbenv_roles, :all # default value
+set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_custom_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_custom_path)}/bin/rbenv exec"
 
 # set up rails
 set :assets_roles, [:web, :app]
