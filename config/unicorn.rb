@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 env = ENV['RACK_ENV'] || ENV['RAILS_ENV'] || 'staging'
 
-worker_processes 2
+worker_processes 1
 
 # socket
 listen 3311
